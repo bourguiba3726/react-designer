@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
-
-import styles from './styles';
 import Icon from '../Icon';
 import PropertyGroup from './PropertyGroup';
 import Button from './Button';
-import SwitchState from './SwitchState';
 import Columns from './Columns';
 import Column from './Column';
 

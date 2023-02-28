@@ -10,6 +10,7 @@ const Columns = ({showIf=true, ...props}) => {
   }
   return (
     <div style={styles.columns}>
+       
       <div style={styles.panelTitle}>{props.label}</div>
       {props.children}
     </div>

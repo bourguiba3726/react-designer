@@ -1,3 +1,4 @@
+export TextAnnotation from "./TextAnnotation";
 export TextPanel from './TextPanel';
 export ArrangePanel from './ArrangePanel';
 export StylePanel from './StylePanel';

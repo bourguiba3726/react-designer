@@ -3,8 +3,7 @@ import {modes} from '../constants';
 import Icon from '../Icon';
 import _ from 'lodash';
 
-import {SizePanel, TextPanel,
-        StylePanel, ArrangePanel, ImagePanel} from '../panels';
+import {SizePanel, TextPanel, StylePanel, ArrangePanel, ImagePanel,TextAnnotation} from '../panels';
 
 
 export default class Vector extends Component {
@@ -13,7 +12,7 @@ export default class Vector extends Component {
     TextPanel,
     StylePanel,
     ImagePanel,
-    ArrangePanel
+    ArrangePanel,TextAnnotation
   ];
 
   getStyle() {

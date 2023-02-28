@@ -197,17 +197,6 @@ class BezierEditor extends Component {
     }
   }
 
-  getCurrentPoint(pathIndex) {
-    let {state} = this;
-    let {object} = this.props;
-    if (pathIndex === 0) {
-      return {x: object.moveX, y: object.moveY}
-    } else {
-      let path = state.path[pathIndex - 1];
-      return {x: path.x, y: path.y};
-    }
-  }
-
   closePath() {
     this.setState({
       mode: null
@@ -235,12 +224,6 @@ class BezierEditor extends Component {
       movedPathIndex: pathIndex,
       movedTargetX: targetX,
       movedTargetY: targetY
-    });
-  }
-
-  moveInitialVertex(event) {
-    this.setState({
-      mode: 'moveInitial'
     });
   }
 

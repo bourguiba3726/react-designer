@@ -11,16 +11,20 @@ export default class Rect extends Vector {
     initial: {
       width: 5,
       height: 5,
-      strokeWidth: 0,
       fill: "blue",
       radius: 0,
       blendMode: "normal",
-      rotate: 0
+      rotate: 0,
+      title:"",
+      contentText:"",
+      stroke: "gray",
+      strokeWidth: 1
     }
   };
 
   render() {
     let {object, index} = this.props;
+    console.log({object})
     return (
       <rect style={this.getStyle()}
          {...this.getObjectAttributes()}

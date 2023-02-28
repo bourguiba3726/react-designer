@@ -8,7 +8,7 @@ class InsertMenu extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      menuOpened: false,
+      menuOpened: true,
       hoveredTool: null
     }
   }
@@ -37,12 +37,13 @@ class InsertMenu extends Component {
     let keys = Object.keys(tools);
 
     return (
-      <div style={{
+      <div
+       style={{
           ...styles.insertMenu,
           ...menuOpened ? styles.insertMenuHover : {}
         }}
-        onMouseOver={this.openMenu}
-        onMouseOut={this.closeMenu}
+        // onMouseOver={this.openMenu}
+        // onMouseOut={this.closeMenu}
       >
         <div style={styles.mainIcon}>
         {currentTool

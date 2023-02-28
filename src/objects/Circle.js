@@ -13,7 +13,8 @@ export default class Circle extends Vector {
       height: 5,
       rotate: 0,
       fill: "yellow",
-      strokeWidth: 0,
+      stroke: "gray",
+      strokeWidth: 1,
       blendMode: "normal"
     }
   };

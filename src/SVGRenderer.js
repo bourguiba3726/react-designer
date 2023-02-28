@@ -43,7 +43,7 @@ class SVGRenderer extends Component {
          width={width}
          height={height}
          style={style}
-         isRoot={true}
+         isRoot={"true"}
          >
         {objects.map(this.renderObject.bind(this))}
       </svg>
@@ -56,12 +56,12 @@ export const styles = {
     backgroundSize: 400
   },
   grid: {
-    backgroundImage: 'url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5'
-      + 'vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0'
-      + 'PSIyMCIgZmlsbD0iI2ZmZiI+PC9yZWN0Pgo8cmVjdCB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9I'
-      + 'iNGN0Y3RjciPjwvcmVjdD4KPHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIG'
-      + 'ZpbGw9IiNGN0Y3RjciPjwvcmVjdD4KPC9zdmc+)',
-    backgroundSize: "auto"
+    backgroundImage: 'url("../src/images/chantier.jpg")',
+    // backgroundSize: "",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "auto",
+    zIndex: 1,
+    position: 'relative'
   }
 };
 

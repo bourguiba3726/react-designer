@@ -53,8 +53,7 @@ export default class Path extends Vector {
 
   render() {
     let {object} = this.props;
-    let fill = (object.closed ? object.fill
-                              : "transparent");
+    let fill = (object.closed ? object.fill : "transparent");
     return (
       <path style={this.getStyle(object)}
          {...this.getObjectAttributes()}

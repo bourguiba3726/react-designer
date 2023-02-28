@@ -9,7 +9,7 @@ import SVGRenderer from './SVGRenderer';
 import Handler from './Handler';
 import {modes} from './constants';
 import * as actions from './actions';
-import {Text, Path, Rect, Circle, Image} from './objects';
+import {Text, Path, Rect, Circle, Image,Pen} from './objects';
 import PanelList from './panels/PanelList';
 
 class Designer extends Component {
@@ -19,7 +19,8 @@ class Designer extends Component {
       'rectangle': Rect,
       'circle': Circle,
       'polygon': Path,
-      'image': Image
+      'image': Image,
+      'pen':Pen
     },
     snapToGrid: 1,
     svgStyle: {},
@@ -379,8 +380,14 @@ class Designer extends Component {
     let {width, height, canvasOffsetX, canvasOffsetY} = canvas;
     let {background, objects, svgStyle, objectTypes} = this.props;
 
-    return (
-      <SVGRenderer
+    return (<>  
+    
+    {
+      console.log({width, height, canvasOffsetX, canvasOffsetY,background, objects, svgStyle, objectTypes} )
+ 
+
+    }
+     <SVGRenderer
          background={background}
          width={width}
          canvas={canvas}
@@ -391,6 +398,8 @@ class Designer extends Component {
          objectRefs={this.objectRefs}
          onRender={(ref) => this.svgElement = ref}
          onMouseDown={this.newObject.bind(this)} />
+    </>
+   
     );
   }
 
@@ -542,7 +551,7 @@ class Designer extends Component {
               currentTool={selectedTool}
               onSelect={this.selectTool.bind(this)} />
           )}
-
+{console.log(isEditMode, ObjectEditor)}
           {/* Center Panel: Displays the preview */}
           <div style={styles.canvasContainer}>
             {isEditMode && ObjectEditor && (

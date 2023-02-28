@@ -24,12 +24,14 @@
   "license": "MIT",
   "homepage": "https://github.com/react-designer/react-designer",
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
     "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-syntax-optional-chaining": "^7.8.3",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@types/xml2js": "^0.4.11",
     "babel-loader": "^8.0.5",
     "babel-plugin-css-modules-transform": "^1.6.2",
     "babel-plugin-webpack-loaders": "^0.9.0",
@@ -48,14 +50,19 @@
     "webpack": "^4.30.0",
     "webpack-dev-server": "^3.3.1"
   },
-  "peerDependencies": {},
   "dependencies": {
+    "@svg-drawing/core": "*",
+    "@svg-drawing/react": "*",
     "classnames": "^2.2.6",
     "lodash": ">=4.17.11",
     "react-color": "^2.17.3",
+    "react-hooks-svgdrawing": "^2.1.2",
     "react-hotkeys": "^1.1.4",
     "react-portal": "^4.2.0",
+    "react-svg-curve": "^0.2.1",
     "superagent": "*",
-    "webfontloader": "^1.6.28"
-  }
+    "webfontloader": "^1.6.28",
+    "xml2js": "^0.4.23"
+  },
+  "browserslist": "> 0.25%, not dead"
 }
