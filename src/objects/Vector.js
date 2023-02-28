@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {modes} from '../constants';
+import React, { Component } from 'react';
+import { modes } from '../constants';
 import Icon from '../Icon';
 import _ from 'lodash';
 
-import {SizePanel, TextPanel, StylePanel, ArrangePanel, ImagePanel,TextAnnotation} from '../panels';
+import { SizePanel, TextPanel, StylePanel, ArrangePanel, ImagePanel,RecorderPanel } from '../panels';
 
 
 export default class Vector extends Component {
@@ -12,17 +12,25 @@ export default class Vector extends Component {
     TextPanel,
     StylePanel,
     ImagePanel,
-    ArrangePanel,TextAnnotation
+    ArrangePanel,
+    RecorderPanel
+
   ];
+  static meta = {
+    visibility: "",
+    visibilityText: "",
+    isElementHide: false,
+    isTextHide: false
+  }
 
   getStyle() {
-    let {object} = this.props;
+    let { object } = this.props;
     return {
       mixBlendMode: object.blendMode
     }
   }
 
-  getTransformMatrix({rotate, x, y, width, height}) {
+  getTransformMatrix({ rotate, x, y, width, height }) {
     if (rotate) {
       let centerX = width / 2 + x;
       let centerY = height / 2 + y;
@@ -31,7 +39,7 @@ export default class Vector extends Component {
   }
 
   getObjectAttributes() {
-    let {object, onRender, ...rest} = this.props;
+    let { object, onRender, ...rest } = this.props;
     return {
       ...object,
       transform: this.getTransformMatrix(object),

@@ -51,6 +51,9 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.10",
     "@svg-drawing/core": "*",
     "@svg-drawing/react": "*",
     "classnames": "^2.2.6",
@@ -58,9 +61,11 @@
     "react-color": "^2.17.3",
     "react-hooks-svgdrawing": "^2.1.2",
     "react-hotkeys": "^1.1.4",
+    "react-jss": "^10.10.0",
     "react-portal": "^4.2.0",
     "react-svg-curve": "^0.2.1",
     "superagent": "*",
+    "typescript": "^4.9.5",
     "webfontloader": "^1.6.28",
     "xml2js": "^0.4.23"
   },

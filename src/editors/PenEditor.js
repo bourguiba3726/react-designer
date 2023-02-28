@@ -17,7 +17,7 @@ const PenEditor = props => {
   let { moveX, moveY, x, y } = object;
   let offsetX = x - moveX,
     offsetY = y - moveY;
-  console.log({ draw, props })
+  // console.log({ draw, props })
 
 
 
@@ -50,7 +50,8 @@ const PenEditor = props => {
         zIndex: 2,
         filter: 'brightness(0.5)',
         // transform: `translate(${diffX}px, ${diffY}px) scale(${scaleW}, ${scaleH})`
-      }} onPointerUp={async () => {
+      }}
+       onPointerUp={async () => {
         if (!renderRef.current.firstChild.firstChild) return
         const childRec = renderRef.current.firstChild.firstChild.getBoundingClientRect()
         const parentRec = renderRef.current.firstChild.getBoundingClientRect()
@@ -62,7 +63,7 @@ const PenEditor = props => {
         const newRight = Math.max(object.x + object.width, right)
         const newBottom = Math.max(object.y + object.height, bottom)
         const newW = newRight - newX, newH = newBottom - newY
-        console.log(path)
+       
         props.onUpdate({
           x: newX + diffX,
           y: newY + diffY,
@@ -73,7 +74,12 @@ const PenEditor = props => {
           paths: object.paths.concat(path ? path.map(x => x.$.d) : [])
         })
         draw.undo()
-      }} ref={renderRef} />
+      }}
+       
+       onDoubleClick={()=> props.onClose()}
+      ref={renderRef} 
+      
+      />
     </>
   );
 

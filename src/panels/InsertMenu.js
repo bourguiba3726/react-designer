@@ -14,53 +14,53 @@ class InsertMenu extends Component {
   }
 
   openMenu = () => {
-    this.setState({menuOpened: true})
+    this.setState({ menuOpened: true })
   }
 
   closeMenu = () => {
-    this.setState({menuOpened: false})
+    this.setState({ menuOpened: false })
   }
 
   hoverTool = type => {
-    this.setState({hoveredTool: type})
+    this.setState({ hoveredTool: type })
   }
 
   unhoverTool = type => {
     if (this.state.hoveredTool == type) {
-      this.setState({hoveredTool: null})
+      this.setState({ hoveredTool: null })
     }
   }
 
   render() {
-    let {currentTool, tools} = this.props;
-    let {menuOpened, hoveredTool} = this.state;
+    let { currentTool, tools } = this.props;
+    let { menuOpened, hoveredTool } = this.state;
     let keys = Object.keys(tools);
 
     return (
       <div
-       style={{
+        style={{
           ...styles.insertMenu,
           ...menuOpened ? styles.insertMenuHover : {}
         }}
-        // onMouseOver={this.openMenu}
-        // onMouseOut={this.closeMenu}
+      // onMouseOver={this.openMenu}
+      // onMouseOut={this.closeMenu}
       >
         <div style={styles.mainIcon}>
-        {currentTool
-          ? tools[currentTool].meta.icon
-          : <Icon icon={"add"} size={30} />}
+          {currentTool
+            ? tools[currentTool].meta.icon
+            : <Icon icon={"add"} size={30} />}
         </div>
         <ul style={styles.toolBox}>
           {keys.map((type, i) => (
             <li style={{
-                  ...styles.toolBoxItem,
-                  ...currentTool === type ? styles.currentToolboxItem : {},
-                  ...hoveredTool === type ? styles.currentToolboxItem : {}
-                }}
-                onMouseOver={() => this.hoverTool(type)}
-                onMouseOut={() => this.unhoverTool(type)}
-                onMouseDown={this.props.onSelect.bind(this, type)}
-                key={i}>
+              ...styles.toolBoxItem,
+              ...currentTool === type ? styles.currentToolboxItem : {},
+              ...hoveredTool === type ? styles.currentToolboxItem : {}
+            }}
+              onMouseOver={() => this.hoverTool(type)}
+              onMouseOut={() => this.unhoverTool(type)}
+              onMouseDown={this.props.onSelect.bind(this, type)}
+              key={i}>
               {tools[type].meta.icon}
             </li>
           ))}
@@ -75,6 +75,7 @@ const styles = {
     height: 40,
     width: 40,
     overflow: 'hidden',
+    position:'absolute'
   },
   insertMenuHover: {
     background: '#eeeff5',

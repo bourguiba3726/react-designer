@@ -81,7 +81,8 @@ class Handler extends Component {
 const styles = {
   handler: {
     'position': 'absolute',
-    'border': '2px solid #dedede',
+    'border': '1px solid #916566',
+    'boxShadow':'0px 0px 4px #250709d1',
     'zIndex': 999999
   },
   anchor: {

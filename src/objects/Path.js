@@ -15,6 +15,8 @@ export default class Path extends Vector {
       moveX: 0,
       moveY: 0,
       path: [],
+      title:"",
+      contentText:"",
       stroke: "gray",
       strokeWidth: 1
     },

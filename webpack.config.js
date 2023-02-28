@@ -19,17 +19,26 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './examples'
+    './examples',
+    
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
+  resolve: {
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+  },
+  devtool: "source-map",
   plugins: [new webpack.HotModuleReplacementPlugin()],
   module: {
     rules: [
       { test: /\.(png|svg)$/, loader: 'url-loader?limit=8192' },
+      {test: /\.js|\.jsx$/},
+      // { test: /\.tsx?$/, loader: "ts-loader" },
+      // { test: /\.js$/, loader: "source-map-loader" },
       {
         test: /^((?!\.module).)*\.css$/,
         loaders: ['style-loader', 'css-loader']
