@@ -10,7 +10,7 @@ import { modes } from './constants';
 import * as actions from './actions';
 import { Text, Path, Rect, Circle, Image, Pen } from './objects';
 import PanelList from './panels/PanelList';
-import { SideMenu } from './omegup/SideMenu';
+import { SideMenuAnnotation } from './omegup/SideMenuAnnotation';
 
 class Designer extends Component {
   static defaultProps = {
@@ -582,11 +582,11 @@ class Designer extends Component {
                 currentTool={selectedTool}
                 onSelect={this.selectTool.bind(this)} />
             </div>)}
-          {console.log({ objects })}
+         
 
 
           {objects.length &&
-            (<SideMenu {...{
+            (<SideMenuAnnotation {...{
               objects,
               setSelectedObject: (value) => this.showHandler(value),
               setVisibility: (value) => this.setVisibility(value),

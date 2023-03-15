@@ -64,6 +64,7 @@
     "react-jss": "^10.10.0",
     "react-portal": "^4.2.0",
     "react-svg-curve": "^0.2.1",
+    "rxjs": "^7.8.0",
     "superagent": "*",
     "typescript": "^4.9.5",
     "webfontloader": "^1.6.28",

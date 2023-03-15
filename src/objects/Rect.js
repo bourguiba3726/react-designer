@@ -5,10 +5,11 @@ import Icon from '../Icon';
 import _ from 'lodash';
 import WebFont from 'webfontloader';
 import Vector from './Vector';
-
+import { MouseSquare } from '../omegup/assets/icons/iconButton/MouseSquare';
+import './buttonstyles.styles.css'
 export default class Rect extends Vector {
   static meta = {
-    icon: <Icon icon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>} size={30} />,
+    icon: <MouseSquare className={'iconStyle'} />,
     initial: {
       text: "votre text ici",
       fontWeight: "normal",

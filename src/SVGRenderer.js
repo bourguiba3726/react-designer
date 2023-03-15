@@ -62,7 +62,9 @@ class SVGRenderer extends Component {
 
 export const styles = {
   canvas: {
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    height:'550px',
+    width :'830px'
   },
   grid: {
 

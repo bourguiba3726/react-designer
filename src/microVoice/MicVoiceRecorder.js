@@ -5,7 +5,7 @@ import { computeElapsedTime, elapsedTimeReachedMaximumNumberOfMinutes } from './
 
 
 export const MicVoiceRecorder = ({ background, handleBlob, foreground, width, height, barWidth = 10, className, state, maximumRecordingTimeInMinutes = 2 }) => {
-
+    console.log({ state: state.value })
     const analyserCanvas = React.useRef(null);
     let audioRecordStartTime = null
     let elapsedTimeTimer = null
@@ -126,7 +126,7 @@ export const MicVoiceRecorder = ({ background, handleBlob, foreground, width, he
                         const audioSrc = audioCtx.createMediaStreamSource(stream)
                         audioSrc.connect(analyser)
                         const data = new Uint8Array(analyser.frequencyBinCount)
-                        const ctx = analyserCanvas.current?.getContext('2d')
+                        const ctx = analyserCanvas.current.getContext('2d')
                         ctx.fillStyle = background
                         ctx.fillStyle = foreground
 
@@ -135,12 +135,13 @@ export const MicVoiceRecorder = ({ background, handleBlob, foreground, width, he
                             let numb = null
                             numb = requestAnimationFrame(loopingFunction)
                             if (state.value === 'recording') {
+                                console.log('ss')
                                 analyser.getByteFrequencyData(data);
-                                if (analyserCanvas?.current?.width && (s > analyserCanvas?.current?.width)) list = list.slice(1)
+                                if (analyserCanvas.current.width && (s > analyserCanvas.current.width)) list = list.slice(1)
                                 const barHeight = data.reduce((a, b) => a + b, 0) / data.length
                                 list.push({
                                     x: s,
-                                    y: (analyserCanvas?.current?.height || 0) / 2 - barHeight,
+                                    y: (analyserCanvas.current.height || 0) / 2 - barHeight,
                                     w: barWidth,
                                     h: barHeight * 2,
                                 })
@@ -148,6 +149,7 @@ export const MicVoiceRecorder = ({ background, handleBlob, foreground, width, he
                                 s += barWidth
                             }
                             else if (state.value === 'stop') {
+                                console.log('dd')
                                 cancelAnimationFrame(numb)
                                 clearInterval(elapsedTimeTimer)
                                 stopAudioRecording()

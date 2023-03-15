@@ -3,14 +3,12 @@ import { createUseStyles } from "react-jss";
 // @import url(https://fonts.googleapis.com/css?family=Lora:400,400italic,700);
 
 export const useStyles = createUseStyles({
-	example: {
-		display: "flex",
-		flexDirection: "column",
-		marginBottom: "80px",
-	},
+ 
 	 container: {
+		display:"block",
 	 /* margin: 5px 5px 5px;  */
 	 width:" 850px", 
+	 height:"100%",
 	fontFamily: '"Lora", helvetica, arial, sans-serif'
 }
 	})

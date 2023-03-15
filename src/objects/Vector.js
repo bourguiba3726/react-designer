@@ -13,7 +13,7 @@ export default class Vector extends Component {
     StylePanel,
     ImagePanel,
     ArrangePanel,
-    RecorderPanel
+    // RecorderPanel
 
   ];
   static meta = {

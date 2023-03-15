@@ -10,9 +10,9 @@ import { modes } from './constants';
 import * as actions from './actions';
 import { Text, Path, Rect, Circle, Image, Pen } from './objects';
 import PanelList from './panels/PanelList';
-import { SideMenu } from './omegup/SideMenu';
+import { SideMenuAnnotation } from './omegup/SideMenuAnnotation';
 
-class OmegUpDesigner extends Designer {
+class OmegUpDesigner extends Component {
     static defaultProps = {
         objectTypes: {
         },
@@ -568,76 +568,83 @@ class OmegUpDesigner extends Designer {
 
                 <div className={'container'}
                     style={{
-                        ...styles.container,
-                        ...this.props.style,
+                        // ...styles.container,
+                        //  ...this.props.style,
                         padding: 1
                     }}
                     onMouseMove={this.onDrag.bind(this)}
                     onMouseUp={this.stopDrag.bind(this)}>
 
-                    {/* Left Panel: Displays insertion tools (shapes, images, etc.) */}
-                    {InsertMenuComponent && (
-                        <div style={styles.MenuContainer}>
-                            <InsertMenuComponent tools={objectTypes}
-                                currentTool={selectedTool}
-                                onSelect={this.selectTool.bind(this)} />
-                        </div>)}
-                    {console.log({ objects })}
+                    <div className={'headerContainer'}>
+
+                        {showPropertyPanel && objectComponent && (
+                            <div style={styles.toolsContainer}>
+                                <PanelList
+                                    id={this.props.id}
+                                    object={objectWithInitial}
+                                    onArrange={this.handleArrange.bind(this)}
+                                    onChange={this.handleObjectChange.bind(this)}
+                                    objectComponent={objectComponent} />  
+                            </div>)}
 
 
-                    {objects.length &&
-                        (<SideMenu {...{
-                            objects,
-                            setSelectedObject: (value) => this.showHandler(value),
-                            setVisibility: (value) => this.setVisibility(value),
-                            setVisibilityText: (value) => this.setVisibilityText(value),
-                            setVisibilityAllText: (value) => this.setVisibilityAllText(value),
-                            setVisibilityAllElements: (value) => this.setVisibilityAllElements(value),
-                            delElement: (value) => this.removeCurrent(),
 
-                        }} />)}
+                    </div>
+                    <div className={'BlockContainer'}>
+                        <div className={'MenuContainer'} style={{ ...styles.MenuContainer }}>
+                            {InsertMenuComponent && (
+                                <InsertMenuComponent tools={objectTypes}
+                                    currentTool={selectedTool}
+                                    onSelect={this.selectTool.bind(this)} />
+                            )}
+                        </div>
+                        {/* block canvas Container */}
+                        {/* <div style={styles.canvasContainer}> */}
+                        <div className={'canvasContainer'} style={{ ...styles.canvasContainer }}>
 
+                            {isEditMode && ObjectEditor && (
+                                <ObjectEditor object={currentObject}
+                                    offset={this.getOffset()}
+                                    onUpdate={(object) =>
+                                        this.updateObject(selectedObjectIndex, object)}
+                                    onClose={() => this.setState({ mode: modes.FREE })}
+                                    width={width}
+                                    height={height} />)}
 
-                    {/* Center Panel: Displays the preview */}
-                    <div style={styles.canvasContainer}>
-                        {isEditMode && ObjectEditor && (
-                            <ObjectEditor object={currentObject}
-                                offset={this.getOffset()}
-                                onUpdate={(object) =>
-                                    this.updateObject(selectedObjectIndex, object)}
-                                onClose={() => this.setState({ mode: modes.FREE })}
-                                width={width}
-                                height={height} />)}
+                            {showHandler && (
+                                <Handler
+                                    boundingBox={handler}
+                                    canResize={_(currentObject).has('width') ||
+                                        _(currentObject).has('height')}
+                                    canRotate={_(currentObject).has('rotate')}
+                                    onMouseLeave={this.hideHandler.bind(this)}
+                                    onDoubleClick={this.showEditor.bind(this)}
+                                    onDrag={this.startDrag.bind(this, modes.DRAG)}
+                                    onResize={this.startDrag.bind(this, modes.SCALE)}
+                                    onRotate={this.startDrag.bind(this, modes.ROTATE)} />
 
-                        {showHandler && (
-                            <Handler
-                                boundingBox={handler}
-                                canResize={_(currentObject).has('width') ||
-                                    _(currentObject).has('height')}
-                                canRotate={_(currentObject).has('rotate')}
-                                onMouseLeave={this.hideHandler.bind(this)}
-                                onDoubleClick={this.showEditor.bind(this)}
-                                onDrag={this.startDrag.bind(this, modes.DRAG)}
-                                onResize={this.startDrag.bind(this, modes.SCALE)}
-                                onRotate={this.startDrag.bind(this, modes.ROTATE)} />
+                            )}
 
-                        )}
+                            {this.renderSVG()}
+                        </div>
+                        {/* block annotation */}
 
-                        {this.renderSVG()}
+                        <div className={'blockAnnotation'} style={{ ...styles.blockAnnotation }}>
+                            <SideMenuAnnotation {...{
+                                objects,
+                                setSelectedObject: (value) => this.showHandler(value),
+                                setVisibility: (value) => this.setVisibility(value),
+                                setVisibilityText: (value) => this.setVisibilityText(value),
+                                setVisibilityAllText: (value) => this.setVisibilityAllText(value),
+                                setVisibilityAllElements: (value) => this.setVisibilityAllElements(value),
+                                delElement: (value) => this.removeCurrent(),
+                            }} />
+                        </div>
                     </div>
 
-                    {/* Right Panel: Displays text, styling and sizing tools */}
-                    {console.log({ showPropertyPanel })
-                    }
-                    {showPropertyPanel && objectComponent && (
-                        <div style={styles.toolsContainer}>
-                            <PanelList
-                                id={this.props.id}
-                                object={objectWithInitial}
-                                onArrange={this.handleArrange.bind(this)}
-                                onChange={this.handleObjectChange.bind(this)}
-                                objectComponent={objectComponent} />
-                        </div>)}
+                    <div className={'footerContainer'}>
+
+                    </div>
                 </div>
             </HotKeys>
         );
@@ -648,24 +655,84 @@ export const styles = {
     container: {
         width: '100%',
         height: 'auto',
-        position: 'relative',
+        position: 'fixed',
+        background: "#FFFFFE",
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        borderRadius: "10px",
+        overflow: "hidden",
+
     },
+    blockContainer: {
+        "float": "left",
+        "display": "block",
+        "width": "1440px",
+        "height": "1024px",
+        "background": "#FFFFFE",
+        "borderRadius": "10px"
+    },
+    headerContainer: {
+        "float": "left",
+        "display": "block",
+
+        "flexDirection": "row",
+        "alignItems": "flex-start",
+        "padding": "10px",
+        "gap": "15px",
+        "position": "absolute",
+        "width": "241px",
+        "height": "64px",
+        "left": "254px",
+        "top": "32px",
+        "background": "#D8EEFE",
+        "borderRadius": "10px"
+    },
+    footerContainer: {},
+    blockAnnotation: {
+        float: "left",
+        display: "block",
+        flexDirection: "row",
+        alignItems: "flex-start",
+        padding: "0px",
+        gap: "10px",
+        position: "absolute",
+        width: "404px",
+        height: "556px",
+        left: "1003px",
+        top: "235px"
+    },
+
     canvasContainer: {
-        position: 'relative',
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row'
+        boxSizing: "border-box",
+        position: "absolute",
+        width: "836px",
+        height: "556px",
+        left: "142px",
+        top: "235px",
+        background: "url(becca-tapert-tam80nXFvL4-unsplash.jpg)",
+        border: "6px solid #BAE2FF",
+        borderRadius: "10px"
+
     },
     toolsContainer: {
-        position: 'relative',
-        width: '100%'
+
+        // position: 'relative',
+        // width: '100%'
+        "display": "flex",
+        "flexDirection": "row",
+        "alignItems": "flex-start",
+        "padding": "10px",
+        "gap": "15px",
+        "position": "absolute",
+        "width": "60%",
+        "height": "64px",
+        "left": "254px",
+        "top": "32px",
+        "background": "#D8EEFE",
+        "borderRadius": "10px"
     },
     MenuContainer: {
-        position: 'relative',
-        height: "100%",
-        width: '100%'
+        "display": "flex",
     },
     keyboardManager: {
         outline: 'none'

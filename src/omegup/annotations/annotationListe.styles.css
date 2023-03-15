@@ -1,0 +1,16 @@
+
+.iconStyle path {
+    stroke:#094067
+}
+.customScroll::-webkit-scrollbar  {
+    width: 10px;
+  
+}
+.customScroll::-webkit-scrollbar-track {
+    box-shadow: 'inset 0 0 5px grey';
+ 
+}
+.customScroll::-webkit-scrollbar-thumb {
+    background: #3DA9FC;
+    border-radius: 10px;
+}

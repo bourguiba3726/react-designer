@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { modes } from '../constants';
 import Icon from '../Icon';
 import _ from 'lodash';
-
+import { TextIcon } from '../omegup/assets/icons/iconButton';
 import Vector from './Vector';
 import WebFont from 'webfontloader';
-
+import './buttonstyles.styles.css'
 export default class Text extends Vector {
   static meta = {
-    icon: <Icon icon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>} size={30} />,
+    icon: <TextIcon className={'iconStyle'} />,
     initial: {
       text: "Type some text...",
       rotate: 0,

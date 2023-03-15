@@ -116,4 +116,36 @@ export default {
     padding: '2px 6px',
     cursor: 'default'
   },
+  colorPicker: {
+    "display": "flex",
+    "flexDirection": "row",
+    "alignItems": "flex-start",
+    "padding": "10px",
+    "gap": "10px",
+    "width": "44px",
+    "height": "44px",
+    "background": "#3DA9FC",
+    "boxShadow": "0px 0px 4px rgba(0, 0, 0, 0.25)",
+    "borderRadius": "10px",
+    "flex": "none",
+    "order": "0",
+    "flexGrow": "0"
+  },
+  toolsContainer: {
+
+    // position: 'relative',
+    // width: '100%'
+    "display": "flex",
+    "flexDirection": "row",
+    "alignItems": "flex-start",
+    "padding": "10px",
+    "gap": "15px",
+    "position": "absolute",
+    "width": "60%",
+    "height": "64px",
+    "left": "254px",
+    "top": "32px",
+    "background": "#D8EEFE",
+    "borderRadius": "10px"
+},
 };

@@ -65,11 +65,20 @@ export const useStyles = createUseStyles({
             }
         }
     },
-    // onClick: {
-    //     '&>div>div>ul>li': {
-    //         '&>div': {
-    //             whiteSpace:'normal',
-    //         }
-    //     }
-    // }
+    
+    ListeAnnotation:{
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "padding": "0px",
+        "width": "383px",
+        "height": "64px",
+        "borderRadius": "10px",
+        "flex": "none",
+        "order": "0",
+        "alignSelf": "stretch",
+        "flexGrow": "0"
+    },
+  
 }) 

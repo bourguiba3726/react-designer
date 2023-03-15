@@ -7,7 +7,7 @@ class PanelList extends Component {
   
     return (
 
-      <div style={{...styles.propertyPanel}}>
+      <div style={{...styles.toolsContainer}}>
         {objectComponent.panels.map((Panel, i) => <Panel key={i} id={id} {...this.props} />)}
       </div>
     );

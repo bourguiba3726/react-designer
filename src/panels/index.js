@@ -5,4 +5,4 @@ export StylePanel from './StylePanel';
 export SizePanel from './SizePanel';
 export InsertMenu from './InsertMenu';
 export ImagePanel from './ImagePanel';
-export RecorderPanel from './RecorderPanel';
+// export RecorderPanel from './RecorderPanel';

@@ -4,10 +4,11 @@ import Icon from '../Icon';
 import _ from 'lodash';
 import WebFont from 'webfontloader';
 import Vector from './Vector';
-import { Text } from './Text';
+import { MouseCircle } from '../omegup/assets/icons/iconButton';
+import './buttonstyles.styles.css'
 export default class Circle extends Vector {
   static meta = {
-    icon: <Icon icon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>} size={30} />,
+    icon: <MouseCircle className={'iconStyle'} />,
     initial: {
       text: "votre text ici",
       fontWeight: "normal",
@@ -44,7 +45,7 @@ export default class Circle extends Vector {
     };
     return (
 
-      <g  visibility={object.visibility}>
+      <g visibility={object.visibility}>
         <ellipse style={this.getStyle()}
           {...this.getObjectAttributes()}
           rx={object.width / 2}
